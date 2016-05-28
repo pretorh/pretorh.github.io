@@ -15,6 +15,10 @@ layout: default
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
 
+        {% for tag in post.tags %}
+            {% include icon-tag.html tag=tag %}
+        {% endfor %}
+
         {{ post.excerpt }}
       </li>
     {% endfor %}
