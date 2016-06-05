@@ -1,5 +1,6 @@
 ---
 layout: post
+date: 2016-06-05T17:46:16Z
 title: "Jekyll Setup"
 tags: jekyll configs
 ---
@@ -28,7 +29,7 @@ Changed the `<li>` element in `index.html` to include the excerpt of each post:
 #### Display tags in post list
 Downloaded a [tag icon SVG](https://www.svgimages.com/tag-icon.html)
 
-Created an include file `icon-tag.html` (basically the same as the `span` from the `icon-gibhub.html` file)
+Created an include file `icon-tag.html` (based on the `span` from the `icon-gibhub.html` file)
 {% highlight html %}
 {% raw %}
 <span class="icon">{% include icon-tag.svg %} {{ include.tag }}</span>
@@ -55,10 +56,15 @@ in `_includes/head.html`:
 - Remove RSS
 - Fix date time format
     - Changed to [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) dates: `%Y-%m-%d` (2016-05-28) instead of `%b %-d, %Y` (May 28, 2016)
+- Add custom 404 page
+    - Just created a simple `404.html` file in the project root, using the `default` layout
 
 ## Creating posts
 
-Created some Perl [scripts](https://github.com/pretorh/jekyll-pub) to help setup and manage Jekyll posts
+Creating a draft seems pretty simple: create a `.md` file in the `_drafts` folder, setup some [front matter](https://jekyllrb.com/docs/frontmatter/) and run Jekyll with the `--drafts` switch.
+When you are happy with it, add the date to the file, and move it into the `_posts` folder, remembering to rename the file based on the `YEAR-MONTH-DAY-title.MARKUP` format.
+
+Since this all seemed very manualy, I created some Perl [scripts](https://github.com/pretorh/jekyll-pub) to help setup and manage Jekyll posts
 
 - Creating drafts
     - `jekyll-new-draft.pl [title]`
