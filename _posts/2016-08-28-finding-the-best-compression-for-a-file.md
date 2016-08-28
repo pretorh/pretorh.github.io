@@ -12,6 +12,7 @@ Files compress better depending on the compression method. Sometimes it does not
 # Compression methods
 
 `gzip`, `bzip2` and `xz` accept similar command line arguments:
+
 - `-c` compress to `stdout`. keeps the original file
 - `-9` use best compression
 
@@ -44,6 +45,7 @@ cat $FILE | wc -c
 {% endhighlight %}
 
 Links:
+
 - [gzip](https://www.gnu.org/software/gzip/)
     ([invoking](https://www.gnu.org/software/gzip/manual/html_node/Invoking-gzip.html#Invoking-gzip))
 - [bzip2](http://bzip.org/)
