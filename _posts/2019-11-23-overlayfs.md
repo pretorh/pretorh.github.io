@@ -5,9 +5,7 @@ title: "Overlayfs"
 tags: linux
 ---
 
-# overlayfs
-
-merges a readonly base directory (`lower`) and a new directory (`upper`) into a writable directory (`merged`)
+Merges a readonly base directory (`lower`) and a new directory (`upper`) into a writable directory (`merged`)
 Changes made in this writable directory are saved in `upper`
 
 ## test
