@@ -12,6 +12,10 @@ date_simple=${exif_date//[^0-9]/}
 filename_digits=$(basename "$1" | sed 's|[^0-9]||g')
 filename_simple=${filename_digits:0:14}
 
-if [ "$date_simple" != "$filename_simple" ] ; then
-    echo "$1 ($exif_date)"
+diff=$((date_simple-filename_simple))
+max_diff=${MAX_DIFF:-60}
+if [ $diff -gt "$max_diff" ] || [ $diff -lt "-$max_diff" ] ; then
+    echo "$1 ($filename_simple $exif_date) date diff of $diff"
+elif [ "$date_simple" != "$filename_simple" ] ; then
+    echo "$1 ($exif_date) not exact"
 fi
