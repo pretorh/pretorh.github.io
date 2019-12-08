@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+set -eo pipefail
 
 exif_date=$(exiv2 "$1" | grep timestamp | awk -F ' : ' '{print $2}' | awk -F ':' '{print $1"-"$2"-"$3"."$4"."$5}')
 # ignore failed to read
