@@ -11,6 +11,7 @@ date_simple=${exif_date//[^0-9]/}
 # get only the digits in the filename, and only the first 14 (to ignore enumarations)
 filename_digits=$(basename "$1" | sed 's|[^0-9]||g')
 filename_simple=${filename_digits:0:14}
+[ ${#filename_simple} -lt 8 ] && exit 0
 
 diff=$((date_simple-filename_simple))
 max_diff=${MAX_DIFF:-60}
