@@ -2,8 +2,8 @@
 
 exif_date=$(exiv2 "$1" | grep timestamp | awk -F ' : ' '{print $2}' | awk -F ':' '{print $1"-"$2"-"$3"."$4"."$5}')
 # ignore failed to read
-[ -z "$exif_date" ] && exit 0
-[ "$exif_date" = "--.." ] && exit 0
+[ -z "$exif_date" ] && echo "$1: no exif date" >&2 && exit 0
+[ "$exif_date" = "--.." ] && echo "$1: no exif date" >&2 && exit 0
 
 # get only the digits in the exif date
 date_simple=${exif_date//[^0-9]/}
@@ -11,7 +11,7 @@ date_simple=${exif_date//[^0-9]/}
 # get only the digits in the filename, and only the first 14 (to ignore enumarations)
 filename_digits=$(basename "$1" | sed 's|[^0-9]||g')
 filename_simple=${filename_digits:0:14}
-[ ${#filename_simple} -lt 8 ] && exit 0
+[ ${#filename_simple} -lt 8 ] && echo "$1: $filename_digits is less than 8 characters" >&2 && exit 0
 
 diff=$((date_simple-filename_simple))
 max_diff=${MAX_DIFF:-60}
